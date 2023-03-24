@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Note</string>
+    <string name="deleted">Note successfully deleted!</string>
+    <string name="created">Note successfully created!</string>
+    <string name="edited">Note successfully edited!</string>
 </resources>
