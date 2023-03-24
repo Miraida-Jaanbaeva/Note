@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+
     //DI Hilt
     implementation(Dependencies.DaggerHilt.android)
     kapt(Dependencies.DaggerHilt.compiler)
