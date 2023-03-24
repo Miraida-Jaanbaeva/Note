@@ -1,5 +1,5 @@
 plugins {
-    id(Plugins.AGP.application)
+    id(Plugins.AGP.library)
     id(Plugins.Kotlin.android)
     id(Plugins.Kotlin.kapt)
     id(Plugins.DaggerHilt.hilt)
@@ -10,13 +10,11 @@ android {
     compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.example.lecture_1a_7"
         minSdk = AppConfig.minSdk
         targetSdk = AppConfig.targetSdk
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,40 +33,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-
-    implementation(project(":data"))
     implementation(project(":domain"))
-
-    implementation(Dependencies.UI.core)
-    implementation(Dependencies.UI.appcompat)
-    implementation(Dependencies.UI.material)
-    implementation(Dependencies.UI.constraint)
-    implementation(Dependencies.UI.fragment)
-    implementation(Dependencies.UI.legacy)
-    implementation(Dependencies.UI.lifecycleLivedata)
-    implementation(Dependencies.UI.lifecycleViewModel)
 
     //DI Hilt
     implementation(Dependencies.DaggerHilt.android)
     kapt(Dependencies.DaggerHilt.compiler)
 
     //Coroutine
-    implementation(Dependencies.Coroutine.android)
-
-    // Nav
-    implementation(Dependencies.Nav.fragment)
-    implementation(Dependencies.Nav.ui)
-
-    //Gson
-    implementation(Dependencies.gson)
+    implementation(Dependencies.Coroutine.core)
 
     //Room
     implementation(Dependencies.Room.room)
     implementation(Dependencies.Room.runtime)
+    kapt(Dependencies.Room.compiler)
 }
